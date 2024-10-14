@@ -1,0 +1,40 @@
+application:
+  recover:
+    no-recover-for:
+      - java.lang.IllegalArgumentException
+      - java.lang.IllegalStateException
+  logging:
+    enabled: true
+    level: WARN
+    print-args: true
+#    output:
+#      - type: file
+#        level: DEBUG
+#      - type: sout
+#        level: INFO
+#      - type: anything
+#        level: WARN
+#        enabled: false
+server:
+  port: 8081
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/master
+  application:
+    name: timesheet-rest
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: false
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka
+#  instance:
+#    preferIpAddress: true

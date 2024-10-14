@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home / Timesheet Page</title>
+</head>
+<body>
+<h1>Записи учета рабочего времени</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Идентификатор записи</th>
+        <th>Проект</th>
+        <th>Минут потрачено</th>
+        <th>Дата записи</th>
+        <th>Перейти к записи</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="timesheet : ${timesheets}">
+        <td><span th:text="${timesheet.id}"></span></td>
+        <td><span th:text="${timesheet.projectName}"></span></td>
+        <td><span th:text="${timesheet.minutes}"></span></td>
+        <td><span th:text="${timesheet.createdAt}"></span></td>
+        <td><a th:href="@{'/timesheets/{id}'(id=${timesheet.id})}">Перейти к записи</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
